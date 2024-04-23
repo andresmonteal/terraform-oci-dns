@@ -16,7 +16,7 @@ resource "oci_dns_view" "main" {
   compartment_id = local.compartment_id
 
   #Optional
-  scope         = "PRIVATE"
+  #scope         = "Private"
   defined_tags  = var.defined_tags
   display_name  = var.name
   freeform_tags = local.merged_freeform_tags
