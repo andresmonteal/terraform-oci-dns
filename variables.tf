@@ -52,3 +52,9 @@ variable "dns_records" {
   type        = any
   default     = null
 }
+
+variable "view_id" {
+  description = "(Optional) The OCID of the private view containing the zone. This value will be null for zones in the global DNS, which are publicly resolvable and not part of a private view."
+  type        = string
+  default     = null
+}

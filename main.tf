@@ -53,7 +53,7 @@ resource "oci_dns_rrset" "main" {
     }
   }
   scope   = var.scope
-  view_id = null
+  view_id = var.view_id
 
   timeouts {
     create = "20m"
