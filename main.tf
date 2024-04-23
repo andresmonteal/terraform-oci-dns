@@ -23,7 +23,7 @@ resource "oci_dns_zone" "main" {
   freeform_tags = local.merged_freeform_tags
   scope         = var.scope
 
-  view_id = null
+  view_id = var.view_id
   timeouts {
     create = "20m"
     update = "20m"
