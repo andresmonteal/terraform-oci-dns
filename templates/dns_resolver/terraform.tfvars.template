@@ -1,0 +1,63 @@
+# This file contains the variables that are used in the module to implement a DNS Resolver
+# Fill in the required information and rename the file to terraform.tfvars
+
+# Required variables
+
+tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaakq76gncimczz"
+vcn_compartment_name = "network"
+vcn_display_name = "vcn-prod"
+
+# Optional
+attached_views = [
+    {
+      view_name = "view01"
+      compartment_name = "network-prod"
+    },
+    {
+      view_name = "view02"
+      compartment_name = "network-preprod"
+    }
+]
+
+resolver_endpoint_list = {
+    endpointListener = {
+        is_forwarding = false
+        is_listening = true 
+        endpoint_subnet_compartment = "network"
+        endpoint_subnet_name = "privateSubnet"
+        resolver_endpoint_listening_address = "10.100.100.38"
+        resolver_endpoint_forwarding_address = ""
+        nsg_name = "nsg_name1"
+    }
+    endpointForwarding = {
+        is_forwarding = true
+        is_listening = false 
+        endpoint_subnet_compartment = "network"
+        endpoint_subnet_name = "privateSubnet2"
+        resolver_endpoint_listening_address = ""
+        resolver_endpoint_forwarding_address = ""
+        nsg_name = ""
+    }
+}
+
+rules = {
+    domain = [{
+        destination_addresses = ["192.168.11.11"]
+        source_endpoint_name = "endpointForwarding"
+        qname_cover_conditions = ["example.com.co", "test.internal"]
+        client_address_conditions = []
+    },
+    {
+        destination_addresses = ["192.168.11.12"]
+        source_endpoint_name = "endpointForwarding"
+        qname_cover_conditions = ["example.com.co", "prod.internal"]
+        client_address_conditions = []
+    }]
+
+    addresses = [{
+        destination_addresses = ["192.168.11.15"]
+        source_endpoint_name = "endpointForwarding"
+        qname_cover_conditions = []
+        client_address_conditions = ["172.16.5.0/24", "172.16.6.0/24"]
+    }]
+}

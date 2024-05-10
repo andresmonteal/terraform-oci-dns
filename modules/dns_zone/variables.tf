@@ -44,13 +44,13 @@ variable "zone_type" {
 variable "scope" {
   description = "(Optional) Specifies to operate only on resources that have a matching DNS scope. This value will be null for zones in the global DNS and PRIVATE when creating a private zone."
   type        = string
-  default     = "GLOBAL"
+  default     = null
 }
 
 variable "dns_records" {
   description = " If a specified record does not exist, it will be created. If the record exists, then it will be updated to represent the record in the body of the request."
   type        = any
-  default     = null
+  default     = []
 }
 
 variable "view_id" {
