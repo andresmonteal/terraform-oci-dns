@@ -1,7 +1,7 @@
 // Copyright (c) 2018, 2021, Oracle and/or its affiliates.
 
 module "dns" {
-  source = "../"
+  source = "../../../modules/dns_zones"
 
   for_each = var.dns
 

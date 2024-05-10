@@ -19,7 +19,7 @@ variable "compartment" {
 }
 
 variable "name" {
-  description = "(Required) The name of the zone."
+  description = "(Required) The name of the DNS view."
   type        = string
 }
 

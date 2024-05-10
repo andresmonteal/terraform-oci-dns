@@ -1,0 +1,23 @@
+# This file contains the variables that are used in the module to implement a DNS View and Zone
+# Fill in the required information and rename the file to terraform.tfvars
+
+tenancy_ocid        = "ocid1.tenancy.oc1..aaaaaaaakq76gncimczz"
+compartment         = "network"
+zone_name           = "zone.com"
+scope               = "PRIVATE"
+dns_records         = [
+    {
+        domain = "domain1"
+        rtype = "A"
+        rdata = ["10.10.10.20"]
+        ttl = "3600"
+    },
+    {
+        domain = "domain2"
+        rtype = "A"
+        rdata = ["10.10.10.30","10.10.10.32"]
+        ttl = "3600"
+    }
+]
+
+view_name           = "view_name"
